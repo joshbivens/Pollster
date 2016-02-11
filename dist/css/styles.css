@@ -1,5 +1,12 @@
 .test {
   background: #eee;
   width: 325px;
+  padding: 15px;
   margin: auto;
+}
+
+form {
+  background: #ddd;
+  margin: 0;
+  padding: 10px;
 }
