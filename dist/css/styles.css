@@ -1,15 +1,21 @@
 .panel {
-  background: #eee;
-  width: 75%;
-  max-width: 500px;
+  background: #f2f2f2;
+  width: 400px;
   padding: 25px;
   margin: 100px auto;
 }
 
+.panel:nth-child(2) p {
+  margin-bottom: 0;
+}
+
 form {
-  background: #ddd;
-  margin: 0;
+  margin: 0 0 0 -15px;
   padding: 20px;
+}
+
+input[type="text"] {
+  width: 80%;
 }
 
 input[type="radio"] {
@@ -17,5 +23,38 @@ input[type="radio"] {
 }
 
 input[type="submit"] {
-  margin-top: 15px;
+  margin: 15px 0 0 0;
+}
+
+input[type="button"] {
+  margin: 15px 0 0 5px;
+}
+
+#add {
+  border-radius: 50%;
+  padding: 0;
+  width: 38px;
+}
+
+.response p {
+  margin-bottom: 0;
+}
+
+.response div {
+  height: 20px;
+  width: 200px;
+  background: lightsalmon;
+  margin-bottom: 15px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.response:nth-child(2) div {
+  width: 180px;
+  background: lightblue;
+}
+
+.response:nth-child(3) div {
+  width: 210px;
+  background: tan;
 }

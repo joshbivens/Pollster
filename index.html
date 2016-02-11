@@ -39,40 +39,49 @@
         <!-- Construction Panel
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="panel">
-          <h4>Polling App</h4>
-          <p>What's your preferred CSS Library?</p>
+          <h4>Pollster</h4>
           <form action="#">
-            <input type="radio" name="option" value="one"> Skeleton </br>
-            <input type="radio" name="option" value="two"> Material </br>
-            <input type="radio" name="option" value="three"> Pure </br>
-            <input type="submit" value="Vote">
+            Your Question:</br>
+            <input type="text"></br>
+            Options:</br>
+            <input type="text">
+            <input type="button" id="add" value="+"></br>
+            <input type="submit" value="Submit">
           </form>
         </div>
 
         <!-- Radio Panel
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="panel">
-          <h4>Polling App</h4>
+          <h4>Pollster</h4>
           <p>What's your preferred CSS Library?</p>
           <form action="#">
             <input type="radio" name="option" value="one"> Skeleton </br>
             <input type="radio" name="option" value="two"> Material </br>
             <input type="radio" name="option" value="three"> Pure </br>
-            <input type="submit" value="Vote">
+            <input type="submit" class="button-primary" value="Vote">
           </form>
         </div>
 
         <!-- Results Panel
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="panel">
-          <h4>Polling App</h4>
+          <h4>Pollster</h4>
           <p>What's your preferred CSS Library?</p>
-          <form action="#">
-            <input type="radio" name="option" value="one"> Skeleton </br>
-            <input type="radio" name="option" value="two"> Material </br>
-            <input type="radio" name="option" value="three"> Pure </br>
-            <input type="submit" value="Vote">
-          </form>
+          <div>
+            <div class="response">
+              <p>Skeleton (42 votes)</p>
+              <div></div>
+            </div>
+            <div class="response">
+              <p>Material (33 votes)</p>
+              <div></div>
+            </div>
+            <div class="response">
+              <p>Pure (50 votes)</p>
+              <div></div>
+            </div>
+          </div>
         </div>
 
         <!-- END Primary Page Layout
