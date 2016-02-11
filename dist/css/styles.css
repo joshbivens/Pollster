@@ -1,6 +1,7 @@
 .panel {
   background: #f2f2f2;
-  width: 400px;
+  width: 70%;
+  min-width: 320px;
   padding: 25px;
   margin: 100px auto;
 }
@@ -40,21 +41,27 @@ input[type="button"] {
   margin-bottom: 0;
 }
 
-.response div {
+.bar {
   height: 20px;
-  width: 200px;
+  width: 45%;
   background: lightsalmon;
-  margin-bottom: 15px;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.response:nth-child(2) div {
-  width: 180px;
+.response:nth-child(2) .bar {
+  width: 38%;
   background: lightblue;
 }
 
-.response:nth-child(3) div {
-  width: 210px;
+.response:nth-child(3) .bar {
+  width: 50%;
   background: tan;
+}
+
+.bar-bg {
+  background: #ddd;
+  height: 20px;
+  width: 100%;
+  margin-bottom: 15px;
 }
