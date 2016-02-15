@@ -67,3 +67,51 @@ input[type="submit"] {
   width: 100%;
   margin-bottom: 15px;
 }
+
+#create-panel {
+  display: block;
+}
+
+#radio-panel {
+  display: none;
+}
+
+#response-panel {
+  display: none;
+}
+
+#loader {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin-top: 300px;
+}
+
+#loader div {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #bbb;
+  opacity: 0;
+}
+
+#loader div:first-child {
+  animation: loading 1s infinite;
+}
+
+#loader div:nth-child(2) {
+  animation: loading 1s infinite;
+  animation-delay: .2s;
+}
+
+#loader div:nth-child(3) {
+  animation: loading 1s infinite;
+  animation-delay: .4s;
+}
+
+@keyframes loading {
+  50% {
+    opacity: 1;
+  }
+}

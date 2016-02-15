@@ -26,12 +26,22 @@ function createPoll(e) {
   e.preventDefault();
   var title = document.getElementById("title").value;
   var options = document.getElementsByClassName("option");
+  var createPanel = document.getElementById("create-panel");
+  var radioPanel = document.getElementById("radio-panel");
+  var loader = document.getElementById("loader");
   var values = {title: title};
 
   for(var i = 0, x = options.length; i < x; i++) {
     var current = options[i];
     values[current.name] = current.value;
   }
+
+  createPanel.style.display = "none";
+  loader.style.display = "block";
+  window.setTimeout(function() {
+    radioPanel.style.display = "block";
+    loader.style.display = "none";
+  }, 1500);
 
   console.log(values);
   return values;
