@@ -1,34 +1,45 @@
+
+var create = document.getElementById("create");
+var add = document.getElementById("add");
+var num = 2;
+
 // ---------------------------------------------
 // Add options
 // ---------------------------------------------
-var num = 2;
 
-$("#add").on("click", function() {
+function addOption() {
+  var newOption = document.createElement("input");
+  var optionsList = document.getElementById("options");
+
   num += 1;
-
-  var newOption = $("<input type='text' class='option'>");
-  newOption.attr("name", "opt_" + num);
-
-  $("#options").append(newOption);
-});
-
+  newOption.className = "option";
+  newOption.setAttribute("type", "text");
+  newOption.setAttribute("name", "opt_" + num);
+  optionsList.appendChild(newOption);
+}
 
 // ---------------------------------------------
 // Create Poll
 // ---------------------------------------------
-$("input[type='submit']").on("click", function(e) {
-  e.preventDefault();
 
-  var title = $("#title").val();
+function createPoll(e) {
+  e.preventDefault();
+  var title = document.getElementById("title").value;
+  var options = document.getElementsByClassName("option");
   var values = {title: title};
 
-  $('.option').each(function() {
-    values[this.name] = this.value;
-  });
+  for(var i = 0, x = options.length; i < x; i++) {
+    var current = options[i];
+    values[current.name] = current.value;
+  }
 
   console.log(values);
-
-  // Still need to hide this and show the Radio Panel
-
   return values;
-});
+}
+
+// ---------------------------------------------
+// Event Listeners
+// ---------------------------------------------
+
+add.addEventListener("click", addOption);
+create.addEventListener("click", createPoll);
