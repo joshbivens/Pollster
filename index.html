@@ -27,6 +27,14 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="dist/images/favicon.png">
 
+  <!-- Firebase
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+
+  <!-- Scripts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="dist/js/zepto.js"></script>
+
 </head>
 <body>
 
@@ -57,7 +65,7 @@
               <input type="text" class="option" name="opt_2">
             </div>
             <input type="button" id="add" value="Add Option"></br>
-            <input type="submit" id="create" value="Submit">
+            <button type="submit" id="create">Submit</button>
           </form>
         </div>
 
@@ -65,12 +73,10 @@
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="panel" id="radio-panel">
           <h4>Pollster</h4>
-          <p>What's your preferred CSS Library?</p>
-          <form action="#">
-            <input type="radio" name="option" value="one"> Skeleton </br>
-            <input type="radio" name="option" value="two"> Material </br>
-            <input type="radio" name="option" value="three"> Pure </br>
-            <input type="submit" value="Vote">
+          <p id="title-area"></p>
+          <form id="radio-form">
+            <div id="radio-list"></div>
+            <button type="submit" id="vote">Vote</button>
           </form>
         </div>
 
@@ -109,7 +115,7 @@
 
   <!-- Scripts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="dist/js/poll.js"></script>
+  <script src="dist/js/pollv3.js"></script>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

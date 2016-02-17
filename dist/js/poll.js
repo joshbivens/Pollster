@@ -1,55 +1,64 @@
+var num = 2, poll;
 
-var create = document.getElementById("create");
-var add = document.getElementById("add");
-var num = 2;
+// Firebase
+var ref = new Firebase("https://pollsterapp.firebaseio.com/");
 
-// ---------------------------------------------
-// Add options
-// ---------------------------------------------
+ref.on("value", function(snapshot) {
+  console.log(snapshot.val());
+  poll = snapshot.val();
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
 
-function addOption() {
-  var newOption = document.createElement("input");
-  var optionsList = document.getElementById("options");
-
+// Add Option
+$("#add").on("click", function() {
   num += 1;
-  newOption.className = "option";
-  newOption.setAttribute("type", "text");
-  newOption.setAttribute("name", "opt_" + num);
-  optionsList.appendChild(newOption);
-}
+  var option = $("<input type='text' class='option' name='opt_" + num + "' >");
+  $("#options").append(option);
+});
 
-// ---------------------------------------------
-// Create Poll
-// ---------------------------------------------
-
-function createPoll(e) {
-  e.preventDefault();
-  var title = document.getElementById("title").value;
-  var options = document.getElementsByClassName("option");
-  var createPanel = document.getElementById("create-panel");
-  var radioPanel = document.getElementById("radio-panel");
-  var loader = document.getElementById("loader");
-  var values = {title: title};
+// Create values object
+function createValuesObject() {
+  var values = {title: $("#title").val()};
+  var options = $(".option");
 
   for(var i = 0, x = options.length; i < x; i++) {
     var current = options[i];
-    values[current.name] = current.value;
+    values[current.name] = {value: current.value, count: 0};
   }
-
-  createPanel.style.display = "none";
-  loader.style.display = "block";
-  window.setTimeout(function() {
-    radioPanel.style.display = "block";
-    loader.style.display = "none";
-  }, 1500);
-
-  console.log(values);
+  //console.log(values);
   return values;
 }
 
-// ---------------------------------------------
-// Event Listeners
-// ---------------------------------------------
+// Create Poll
+function createPoll() {
+  var values = createValuesObject();
+  ref.set(values);
+  // values are now in 'poll'
+  $("#title-area").text(poll.title);
 
-add.addEventListener("click", addOption);
-create.addEventListener("click", createPoll);
+  for( key in poll ) {
+    var option = poll[key];
+    var $radio = $("<input type='radio' name='option' id='" + key + "' >");
+    var $div = $("<div></div>");
+    if(key !== "title") {
+      $("#radio-list").append($div);
+      $div.append($radio);
+      $radio.after("<label for='" + key + "'>" + option.value + "</label>");
+    }
+  }
+}
+
+// Show poll
+$("#create").on("click", function(e) {
+  e.preventDefault();
+  createPoll();
+
+  $("#create-panel").css("display", "none");
+  $("#loader").css("display", "block");
+  window.setTimeout(function() {
+    $("#loader").css("display", "none");
+    $("#radio-panel").css("display", "block");
+  }, 1000);
+
+});

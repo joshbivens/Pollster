@@ -29,10 +29,16 @@ input[type="text"], #add {
 }
 
 input[type="radio"] {
-  margin: 15px 10px;
+  float: left;
+  margin: 5px 10px;
 }
 
-input[type="submit"] {
+label {
+  margin-left: 20px;
+  font-weight: normal;
+}
+
+button {
   margin: 15px 0 0 0;
   border: 0;
   background: lightslategrey;
@@ -74,6 +80,14 @@ input[type="submit"] {
 
 #radio-panel {
   display: none;
+}
+
+#radio-list {
+  width: 100%;
+}
+
+#radio-list div {
+  margin-bottom: 20px;
 }
 
 #response-panel {
