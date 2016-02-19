@@ -3,13 +3,16 @@ new Vue({
   data: {
     title: "What's the best way to spend your time?",
     options: [
-      { value: "opt_1", text: 'Sleep' },
-      { value: "opt_2", text: 'Develop' }
+      { id: "opt_1", text: 'Sleep' },
+      { id: "opt_2", text: 'Develop' }
     ]
   },
   methods: {
     addOption: function() {
-      // ??
+      var options = document.getElementById("options");
+      var newOption = document.createElement("input");
+      newOption.setAttribute("type", "text");
+      options.appendChild(newOption);
     }
   }
 })

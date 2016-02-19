@@ -61,7 +61,7 @@
               <input type="text">
               <input type="text">
             </div>
-            <button type="submit" id="add" @click="addOption">Add Option</button>
+            <button type="submit" id="add" @click.prevent="addOption">Add Option</button>
             <button type="submit">Create</button>
           </form>
         </div>
@@ -72,8 +72,8 @@
           <h4>Pollster</h4>
           <p>{{ title }}</p>
           <div v-for="option in options">
-            <input type="radio" id="{{ option.value }}" name="option">
-            <label for="{{option.value}}">{{ option.text }}</label>
+            <input type="radio" id="{{ option.id }}" name="option">
+            <label for="{{ option.id }}">{{ option.text }}</label>
           </div>
           <button type="submit">Vote</button>
         </div>
