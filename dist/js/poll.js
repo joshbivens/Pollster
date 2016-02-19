@@ -1,4 +1,4 @@
-var num = 2, poll;
+var num = 2;
 
 // Firebase
 var ref = new Firebase("https://pollsterapp.firebaseio.com/");
@@ -26,7 +26,7 @@ function createValuesObject() {
     var current = options[i];
     values[current.name] = {value: current.value, count: 0};
   }
-  //console.log(values);
+
   return values;
 }
 
@@ -34,11 +34,11 @@ function createValuesObject() {
 function createPoll() {
   var values = createValuesObject();
   ref.set(values);
-  // values are now in 'poll'
-  $("#title-area").text(poll.title);
 
-  for( key in poll ) {
-    var option = poll[key];
+  $("#title-area").text(values.title);
+
+  for(var key in values) {
+    var option = values[key];
     var $radio = $("<input type='radio' name='option' id='" + key + "' >");
     var $div = $("<div></div>");
     if(key !== "title") {
@@ -61,4 +61,12 @@ $("#create").on("click", function(e) {
     $("#radio-panel").css("display", "block");
   }, 1000);
 
+});
+
+// Vote!
+$("#vote").on("click", function(e) {
+  e.preventDefault();
+  var checked =  $("input:checked").attr("id");
+  // Here, we need to maybe find an entry in our ref that matches what's checked?
+  console.log(checked);
 });
