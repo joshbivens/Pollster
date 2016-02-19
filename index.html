@@ -27,20 +27,17 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="dist/images/favicon.png">
 
-  <!-- Firebase
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
-
-  <!-- Scripts
+  <!-- CDN
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="dist/js/zepto.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.min.js"></script>
 
 </head>
 <body>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
+  <div class="container" id="app">
     <div class="row">
       <div class="12 columns">
 
@@ -52,63 +49,37 @@
           <div></div>
         </div>
 
-        <!-- Construction Panel
+        <!-- Constructor Panel
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="panel" id="create-panel">
+        <div class="panel">
           <h4>Pollster</h4>
           <form>
             <p>Your Question</p>
-            <input type="text" id="title">
+            <input type="text" v-model="title">
             <p>Options</p>
             <div id="options">
-              <input type="text" class="option" name="opt_1">
-              <input type="text" class="option" name="opt_2">
+              <input type="text">
+              <input type="text">
             </div>
-            <input type="button" id="add" value="Add Option"></br>
-            <button type="submit" id="create">Submit</button>
+            <button type="submit" id="add" @click="addOption">Add Option</button>
+            <button type="submit">Create</button>
           </form>
         </div>
 
         <!-- Radio Panel
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="panel" id="radio-panel">
+        <div class="panel">
           <h4>Pollster</h4>
-          <p id="title-area"></p>
-          <form id="radio-form">
-            <div id="radio-list"></div>
-            <button type="submit" id="vote">Vote</button>
-          </form>
-        </div>
-
-        <!-- Results Panel
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="panel" id="response-panel">
-          <h4>Pollster</h4>
-          <p>What's your preferred CSS Library?</p>
-          <div>
-            <div class="response">
-              <p>Skeleton (42 votes)</p>
-              <div class="bar-bg">
-                <div class="bar"></div>
-              </div>
-            </div>
-            <div class="response">
-              <p>Material (33 votes)</p>
-              <div class="bar-bg">
-                <div class="bar"></div>
-              </div>
-            </div>
-            <div class="response">
-              <p>Pure (50 votes)</p>
-              <div class="bar-bg">
-                <div class="bar"></div>
-              </div>
-            </div>
+          <p>{{ title }}</p>
+          <div v-for="option in options">
+            <input type="radio" id="{{ option.value }}" name="option">
+            <label for="{{option.value}}">{{ option.text }}</label>
           </div>
+          <button type="submit">Vote</button>
         </div>
 
         <!-- End Primary Page Layout
-        --------------------------------------------------- -->
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       </div>
     </div>
   </div>
@@ -121,3 +92,60 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+
+<!-- REFERENCE
+
+<div class="panel" id="create-panel">
+  <h4>Pollster</h4>
+  <form>
+    <p>Your Question</p>
+    <input type="text" id="title">
+    <p>Options</p>
+    <div id="options">
+      <input type="text" class="option" name="opt_1">
+      <input type="text" class="option" name="opt_2">
+    </div>
+    <input type="button" id="add" value="Add Option"></br>
+    <button type="submit" id="create">Submit</button>
+  </form>
+</div>
+
+
+<div class="panel" id="radio-panel">
+  <h4>Pollster</h4>
+  <p id="title-area"></p>
+  <form id="radio-form">
+    <div id="radio-list"></div>
+    <button type="submit" id="vote">Vote</button>
+  </form>
+</div>
+
+
+<div class="panel" id="response-panel">
+  <h4>Pollster</h4>
+  <p>What's your preferred CSS Library?</p>
+  <div>
+    <div class="response">
+      <p>Skeleton (42 votes)</p>
+      <div class="bar-bg">
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="response">
+      <p>Material (33 votes)</p>
+      <div class="bar-bg">
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="response">
+      <p>Pure (50 votes)</p>
+      <div class="bar-bg">
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+-->
