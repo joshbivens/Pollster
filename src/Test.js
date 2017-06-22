@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './App.css';
 
 class Test extends Component {
   render() {
     return (
-      <div>
-        <h2>{ this.props.msg }</h2>
+      <div className="red">
+        <p>{ this.props.msg }</p>
       </div>
     )
   }
